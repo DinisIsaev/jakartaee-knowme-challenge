@@ -63,7 +63,7 @@ mvn clean package wildfly:run
 
 ### 4. Open the App
 
-Navigate to: `http://localhost:8080/duke-knows-me/index.html`
+Navigate to: `http://localhost:8080/chaplin-knows-me/index.html`
 
 1. Click **Connect to Chaplin**
 2. Approve the request on the TMDB tab that opens
@@ -89,4 +89,4 @@ mvn clean package liberty:run
 
 ### Status Endpoint
 
-`http://localhost:8080/duke-knows-me/status`
+`http://localhost:8080/chaplin-knows-me/status`

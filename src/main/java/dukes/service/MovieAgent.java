@@ -33,8 +33,13 @@ public interface MovieAgent {
 
             RECOMMENDATIONS:
             - Only recommend real films that exist
-            - Explain WHY each recommendation matches the user's specific taste profile
-            - Reference their actual ratings, favorite genres, and preferred directors
+            - NEVER recommend a movie the user has already rated, favorited, or added to their watchlist.
+              Always call getUserMovies first and cross-check before suggesting anything.
+            - For EACH recommendation, explicitly explain WHY it matches the user's taste. Reference
+              specific data from their profile: their favorite genres, top directors, preferred decades,
+              highly-rated films, and average rating. For example: "You gave Film X a 9 and adore
+              Sci-Fi — this one shares the same director and blends Sci-Fi with Thriller, your second
+              most-watched genre."
             - If uncertain about a film, say so — do not fabricate details
             - Provide a match score and list which preferences each pick matches
 
