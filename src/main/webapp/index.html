@@ -474,7 +474,7 @@
             btn.textContent = 'Opening TMDB...';
 
             try {
-                const res = await fetch('/duke-knows-me/api/tmdb/auth');
+                const res = await fetch('/chaplin-knows-me/api/tmdb/auth');
                 const data = await res.json();
                 requestToken = data.request_token;
 
@@ -499,7 +499,7 @@
             btn.textContent = 'Connecting...';
 
             try {
-                const res = await fetch('/duke-knows-me/api/tmdb/session?request_token=' + requestToken);
+                const res = await fetch('/chaplin-knows-me/api/tmdb/session?request_token=' + requestToken);
                 const data = await res.json();
 
                 if (data.error) {
@@ -540,7 +540,7 @@
             const typing = addMessage('', 'typing');
 
             try {
-                const res = await fetch('/duke-knows-me/api/chat', {
+                const res = await fetch('/chaplin-knows-me/api/chat', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ userId: accountId, message: 'hello' })
@@ -613,7 +613,7 @@
             const typing = addMessage('', 'typing');
 
             try {
-                const res = await fetch('/duke-knows-me/api/chat', {
+                const res = await fetch('/chaplin-knows-me/api/chat', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ userId: accountId, message: message })

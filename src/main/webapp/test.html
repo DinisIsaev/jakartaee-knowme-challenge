@@ -98,7 +98,7 @@
         async function startAuth() {
             const status = document.getElementById('authStatus');
             try {
-                const res = await fetch('/duke-knows-me/api/tmdb/auth');
+                const res = await fetch('/chaplin-knows-me/api/tmdb/auth');
                 const data = await res.json();
                 requestToken = data.request_token;
                 status.innerHTML = '<div class="status status-ok">Token received. Approve it on TMDB then come back here.</div>';
@@ -112,7 +112,7 @@
         async function completeAuth() {
             const status = document.getElementById('sessionStatus');
             try {
-                const res = await fetch('/duke-knows-me/api/tmdb/session?request_token=' + requestToken);
+                const res = await fetch('/chaplin-knows-me/api/tmdb/session?request_token=' + requestToken);
                 const data = await res.json();
                 accountId = data.account_id;
                 status.innerHTML = '<div class="status status-ok">Connected as <strong>' + data.username + '</strong> (ID: ' + data.account_id + ')</div>';
@@ -130,7 +130,7 @@
             const status = document.getElementById('syncStatus');
             status.innerHTML = '<div class="status">Syncing...</div>';
             try {
-                const res = await fetch('/duke-knows-me/api/sync/' + accountId, { method: 'POST' });
+                const res = await fetch('/chaplin-knows-me/api/sync/' + accountId, { method: 'POST' });
                 const data = await res.json();
                 status.innerHTML = '<div class="status status-ok">' + data.message + '</div>';
             } catch (e) {
@@ -142,7 +142,7 @@
             document.getElementById('resultSection').classList.remove('hidden');
             const resultsDiv = document.getElementById('results');
             try {
-                const res = await fetch('/duke-knows-me/api/profile/' + accountId);
+                const res = await fetch('/chaplin-knows-me/api/profile/' + accountId);
                 if (res.status === 404) { resultsDiv.textContent = 'No profile found. Sync first.'; return; }
                 const data = await res.json();
                 resultsDiv.innerHTML = '<pre>' + JSON.stringify(data, null, 2) + '</pre>';
@@ -155,7 +155,7 @@
             document.getElementById('resultSection').classList.remove('hidden');
             const resultsDiv = document.getElementById('results');
             try {
-                const res = await fetch('/duke-knows-me/api/profile/' + accountId + '/movies');
+                const res = await fetch('/chaplin-knows-me/api/profile/' + accountId + '/movies');
                 const data = await res.json();
                 if (data.length === 0) { resultsDiv.textContent = 'No movies stored. Sync first.'; return; }
                 resultsDiv.innerHTML = data.map(movie =>
@@ -173,7 +173,7 @@
         async function postMovieAction(path, body) {
             const status = document.getElementById('movieActionStatus');
             try {
-                const res = await fetch('/duke-knows-me/api/movies/' + path, {
+                const res = await fetch('/chaplin-knows-me/api/movies/' + path, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(body)
@@ -211,7 +211,7 @@
             document.getElementById('chatBox').appendChild(typing);
 
             try {
-                const res = await fetch('/duke-knows-me/api/chat', {
+                const res = await fetch('/chaplin-knows-me/api/chat', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ userId: accountId, message: 'hello' })
@@ -249,7 +249,7 @@
             document.getElementById('chatBox').appendChild(typing);
 
             try {
-                const res = await fetch('/duke-knows-me/api/chat', {
+                const res = await fetch('/chaplin-knows-me/api/chat', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ userId: accountId, message: message })
@@ -269,7 +269,7 @@
             resultsDiv.textContent = 'Loading...';
 
             try {
-                const res = await fetch('/duke-knows-me/api/tmdb/' + type + '?account_id=' + accountId);
+                const res = await fetch('/chaplin-knows-me/api/tmdb/' + type + '?account_id=' + accountId);
                 const data = await res.json();
 
                 if (data.length === 0) {
